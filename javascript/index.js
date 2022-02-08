@@ -117,12 +117,22 @@ obtainInstruction('steak', 0)
 
 // Iteration 3 using async/await
 
-async function makeBroccoli(){
+/*async function makeBroccoli(){
   for (let i = 0; i < broccoli.length; i++){
-    await obtainInstruction('broccoli', i)
+    const cappuccino = await obtainInstruction('broccoli', i)
     .then((step) => {
       document.querySelector("#broccoli").innerHTML += `<li>${step}</li>`}
       , (error) => console.log(error));
+  }
+}*/
+
+async function makeBroccoli(){
+  try {
+    for (let i = 0; i < broccoli.length; i++){
+    document.querySelector("#broccoli").innerHTML += `<li>${await obtainInstruction('broccoli', i)}</li>`}
+  }
+  catch {
+    (error) => console.log(error)
   }
 }
 
